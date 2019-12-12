@@ -21,7 +21,7 @@ var spotify = new Spotify(keys.spotify);
 inquirer.prompt([
   {
     type: 'input',
-    message: 'Enter a Liri command -- concert this, spotify this song, movie this, or do what it says',
+    message: 'Enter a Liri command: concert this, spotify this song, movie this, or do what it says',
     name: 'command'
   }
 
@@ -67,7 +67,7 @@ inquirer.prompt([
 
 function spotifyFunction(answerVar) {
   appendLog(answerVar);
-  console.log('Hello', answerVar);
+  // console.log('Hello', answerVar);
   if (answerVar.userInput === '') {
     answerVar.userInput = "The Sign"
     console.log('answer.userInput', answerVar);
@@ -96,15 +96,14 @@ function bandsInTownFunction(bandToSearch) {
   console.log('Band to Search', bandToSearch);
   axios.get("https://rest.bandsintown.com/artists/" + bandToSearch + "/events?app_id=codingbootcamp")
     .then(function (response) {
-      // console.log('concert data', response.data)
-      // for (var i = 0; i < response.data.length; i++) {
-      console.log('-----------------------------');
-      console.log(`Artist Name: ${response.data[0].artist.name}
-      \nVenue Name: ${response.data[0].venue.name}
-      \nLocation: ${response.data[0].venue.city + ' ,' + response.data[0].venue.region}
-      \nConcert Date: ${moment(response.headers.date).format('MM/DD/YYYY, hh:00A')}`)
-      console.log('-----------------------------');
-      // };
+      for (var i = 0; i < response.data.length; i++) {
+        console.log('-----------------------------');
+        console.log(`Upcoming Concerts: ${bandToSearch}
+        Venue Name: ${response.data[i].venue.name}
+        Location: ${response.data[i].venue.city + ' ,' + response.data[i].venue.region}
+        Concert Date: ${moment(response.headers.date).format('MM/DD/YYYY, hh:00A')}`);
+        console.log('-----------------------------');
+      };
     });
 };
 
@@ -118,31 +117,25 @@ function movieThisFunction(movieToSearch) {
     .then(response => {
       console.log("---------------------------------")
       console.log(`Movie Title: ${response.data.Title}
-      \nYear Released: ${response.data.Year}
-      \nIMDB Rating: ${response.data.imdbRating}
-      \nRotten Tomatoes Rating: ${response.data.Ratings[0].Value}
-      \nProduction Country: ${response.data.Country}
-      \nMovie Language: ${response.data.Language}
-      \nPlot: ${response.data.Plot}
-      \nActors: ${response.data.Actors}`);
+      Year Released: ${response.data.Year}
+      IMDB Rating: ${response.data.imdbRating}
+      Rotten Tomatoes Rating: ${response.data.Ratings[0].Value}
+      Production Country: ${response.data.Country}
+      Movie Language: ${response.data.Language}
+      Plot: ${response.data.Plot}
+      Actors: ${response.data.Actors}`);
       console.log("---------------------------------")
     }).catch(error => {
       if (error.response) {
         console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        console.log(error.request)
-      } else {
-        console.log('Error', error.message)
-      }
-    })
+      };
+    });
 };
 
 function doWhatItSaysFunction() {
   fs.readFile("random.txt", "utf8", function (error, data) {
     var dataArr = data.split(",");
-    console.log('dataArr', dataArr);
+    // console.log('dataArr', dataArr);
     if (dataArr[0] === 'spotify this song') {
       spotifyFunction(dataArr[1])
     } else if (dataArr[0] === 'concert this') {
