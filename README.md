@@ -49,7 +49,7 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 
 ### Inquirer Code Sample
 
-This is a sample of the inquirer code used to get the user input and run the command enters
+This is a sample of the inquirer code used to get the user input and run the command entered.
 
 ![Inquirer](assets/media/inquirerPrompt.png)
 ![inquirer](assets/media/inquirerAnswer.png)
