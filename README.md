@@ -9,8 +9,8 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 ### LIRI Commands
 ```
 1. Spotify this song
-..* After the user enters the 'spotify this song' command they are promted for a song title. 
-..* LIRI then searches the Spotify API for the top results that match the song title entered
+* After the user enters the 'spotify this song' command they are promted for a song title. 
+* LIRI then searches the Spotify API for the top results that match the song title entered
 
 ![SpotifyGif]()
 
