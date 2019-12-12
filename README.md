@@ -10,12 +10,50 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 ```
 1. Spotify this song
 * After the user enters the 'spotify this song' command they are promted for a song title. 
-* LIRI then searches the Spotify API for the top results that match the song title entered
-
-![SpotifyGif]()
-
+* LIRI then searches the Spotify API and returns the top results for the song title entered
 ```
+![SpotifyGif](assets/media/spotifyThisSong.gif)
 ```
 2. Concert This
+* After the user enters the 'concert this' command they are promted for a band name.
+* LIRI then searches the Bands In Town API and returns the top results for concert dates.
+```
+![ConcertGif](assets/media/concertThis.gif)
 
 ```
+3. Movie This
+* After the user enters the 'movie this' command they promted for a movie name.
+* LIRI then searches the OMDB API and returns movie data for that movie.
+```
+![MovieGif](assets/media/movieThis.gif)
+
+```
+4. Do What it Says
+* After the user enters the 'do what it says' command LIRI automatically searches the Spotify API for the song title "I Want it that Way".
+```
+![doGif](assets/media/doWhatItSays.gif)
+
+
+```
+5. Log Searches
+* LIRI logs each search in the log.txt file.
+```
+![logPic](assets/media/logFile.png)
+
+
+## Technolgies Used:
+* JavaScript
+* Node.js
+* Axios
+* Inquirer
+* Spotify API
+* OMDB API
+* Bands in Town API
+* Moment.js
+
+### Inquirer Code
+```
+This is a sample of the inquirer code used to get the user input and run the command enters
+```
+![Inquirer](inquirerPrompt.png)
+![inquirer](inquirerAnswer.png)
